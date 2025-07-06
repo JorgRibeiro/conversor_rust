@@ -3,7 +3,7 @@ fn main() {
 
     let mut menu:i8;
 
-    while true {
+    loop {
         println!("-----------MENU-----------");
         println!("0 - Sair");
         println!("1 - Colocar um valor para converter");
