@@ -1,6 +1,4 @@
-mod units;
 use std::io::{self};
-use units::{unidades,unidade_peso,unidade_tempo};
 fn main() {
 
     let mut menu:i8;
@@ -12,7 +10,7 @@ fn main() {
         println!("Digite uma opcao:  ");
         menu = input_int8() ;
 
-        if(menu==0){
+        if menu==0 {
             break;
         }
 
@@ -109,27 +107,27 @@ fn conversor(texto: String){
                 match (unidade_origem, unidade_destino) {
                     ("km", "milha") => {
                         let resultado = valor / 1.6;
-                        println!("Resultado: {} kms é igual a {:.2} milhas", valor, resultado);
+                        println!("Resultado: {} kms é igual a {:.2} milhas\n\n", valor, resultado);
                     },
                     ("km", "metro") => {
                         let resultado = valor * 1000.0;
-                        println!("Resultado: {} kms é igual a {:.2} metros", valor, resultado);
+                        println!("Resultado: {} kms é igual a {:.2} metros\n\n", valor, resultado);
                     },
                     ("milha", "metro") => {
                         let resultado = valor * 1609.0;
-                        println!("Resultado: {} milhas é igual a {:.2} metros", valor, resultado);
+                        println!("Resultado: {} milhas é igual a {:.2} metros\n\n", valor, resultado);
                     },
                     ("milha", "km") => {
                         let resultado = valor * 1.6;
-                        println!("Resultado: {} milhas é igual a {:.2} kms", valor, resultado);
+                        println!("Resultado: {} milhas é igual a {:.2} kms\n\n", valor, resultado);
                     },
                     ("metro", "milha") => {
                         let resultado = valor / 1609.0;
-                        println!("Resultado: {} metros é igual a {:.2} milhas", valor, resultado);
+                        println!("Resultado: {} metros é igual a {:.2} milhas\n\n", valor, resultado);
                     },
                     ("metro", "km") => {
                         let resultado = valor / 1000.0;
-                        println!("Resultado: {} metros é igual a {:.2} kms", valor, resultado);
+                        println!("Resultado: {} metros é igual a {:.2} kms\n\n", valor, resultado);
                     },
                     _ => {
                          println!("Conversão de distância inválida. Use 'km' para 'mi' ou 'mi' para 'km'.");
@@ -138,13 +136,29 @@ fn conversor(texto: String){
             },
             "peso" => {
                 match (unidade_origem, unidade_destino) {
-                    ("g", "lb") => {
-                        let resultado = valor * 0.00220462;
-                        println!("Resultado: {} g é igual a {:.4} lb (libras)", valor, resultado);
+                    ("grama", "libra") => {
+                        let resultado = valor / 453.0;
+                        println!("Resultado: {:.2} gramas é igual a {:.2} libras\n\n", valor, resultado);
                     },
-                    ("lb", "g") => {
-                        let resultado = valor * 453.592;
-                        println!("Resultado: {} lb (libras) é igual a {:.2} g", valor, resultado);
+                    ("libra", "grama") => {
+                        let resultado = valor * 453.0;
+                        println!("Resultado: {:.2} libras é igual a {:.2} gramas\n\n", valor, resultado);
+                    },
+                    ("libra", "quilo") => {
+                        let resultado = valor * 0.453;
+                        println!("Resultado: {:.2} libras é igual a {:.2} quilos\n\n", valor, resultado);
+                    },
+                    ("grama", "quilo") => {
+                        let resultado = valor / 1000.0;
+                        println!("Resultado: {:.2} gramas é igual a {:.2} quilos\n\n", valor, resultado);
+                    },
+                    ("quilo", "grama") => {
+                        let resultado = valor * 1000.0;
+                        println!("Resultado: {:.2} quilos é igual a {:.2} gramas\n\n", valor, resultado);
+                    },
+                     ("quilo", "libra") => {
+                        let resultado = valor / 0.453;
+                        println!("Resultado: {:.2} quilos é igual a {:.2} libras\n\n", valor, resultado);
                     },
                     _ => {
                          println!("Conversão de peso inválida. Use 'g' para 'lb' ou 'lb' para 'g'.");
@@ -153,13 +167,29 @@ fn conversor(texto: String){
             },
             "tempo" => {
                 match (unidade_origem, unidade_destino) {
-                    ("g", "lb") => {
-                        let resultado = valor * 0.00220462;
-                        println!("Resultado: {} g é igual a {:.4} lb (libras)", valor, resultado);
+                    ("minuto", "hora") => {
+                        let resultado = valor / 60.0;
+                        println!("Resultado: {} minutos é igual a {:.4} horas", valor, resultado);
                     },
-                    ("lb", "g") => {
-                        let resultado = valor * 453.592;
-                        println!("Resultado: {} lb (libras) é igual a {:.2} g", valor, resultado);
+                    ("minuto", "segundo") => {
+                        let resultado = valor * 60.0;
+                        println!("Resultado: {} minutos é igual a {:.2} segundos", valor, resultado);
+                    },
+                     ("segundo", "minuto") => {
+                        let resultado = valor / 60.0;
+                        println!("Resultado: {} segundos é igual a {:.2} minutos", valor, resultado);
+                    },
+                     ("segundo", "hora") => {
+                        let resultado = valor / 3600.0;
+                        println!("Resultado: {} segundos é igual a {} segundos", valor, resultado);
+                    },
+                     ("hora", "minuto") => {
+                        let resultado = valor * 60.0;
+                        println!("Resultado: {} horas é igual a {:.2} minutos", valor, resultado);
+                    },
+                     ("hora", "segundo") => {
+                        let resultado = valor * 3600.0;
+                        println!("Resultado: {} horas é igual a {} segundos", valor, resultado);
                     },
                     _ => {
                          println!("Conversão de peso inválida. Use 'g' para 'lb' ou 'lb' para 'g'.");
